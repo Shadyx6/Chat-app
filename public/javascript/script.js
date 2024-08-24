@@ -2,6 +2,7 @@ const socket = io();
 const senderButton =  document.querySelector(".submit")
 const liveUser = document.querySelector(".user");
 let counter = document.querySelector('.users-count')
+let counterSmall = document.querySelector('.users-count-small')
 let userInput = document.querySelector(".username");
 
 
@@ -51,6 +52,7 @@ function liveChatters(){
 function countUpdater(){
   socket.on('userscount', (data) => {
     counter.innerHTML = data
+    counterSmall.innerHTML = data
   })
 }
 function messageSender() {
