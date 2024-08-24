@@ -107,8 +107,9 @@ function registerPage() {
     
     document.querySelector(".overlay").classList.add("hidden");
     document.querySelector(".overlay").style.display = "none";
-
+    document.querySelector('.message-div').style.opacity = '1'
     socket.emit("newuser", userInput.value);
+    
   }
   function errorDisplay(){
     if(userInput.value.length >= 3){

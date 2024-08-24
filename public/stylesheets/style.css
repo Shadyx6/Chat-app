@@ -32,7 +32,7 @@
 
 @media (max-width: 768px) {
     .container {
-      height: calc(100vh - 200px); /* Adjust this value based on your header and footer height */
+      height: calc(100vh - 200px); 
       max-height: calc(100vh - 200px);
       overflow-y: auto;
     }
@@ -40,8 +40,8 @@
   
   textarea {
     min-height: 50px;
-    max-height: 50vh; /* Prevent it from growing too large */
-    overflow-y: hidden; /* Hide scrollbar */
+    max-height: 50vh; 
+    overflow-y: hidden;
   }
   
   @media (min-width: 768px) {
