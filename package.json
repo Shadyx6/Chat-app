@@ -1,5 +1,5 @@
 {
-  "name": "socket.io",
+  "name": "chatters-hub",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
