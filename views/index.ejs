@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatters Hub - Chat with Strangers today!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
+  </head>
+  <body>
+    <div
+    class="overlay h-full w-full z-50 bg-gradient-to-br from-blue-500 to-purple-600 absolute max-md:flex-col top-0 left-0 md:flex items-center justify-center max-md:p-10 max-md:space-y-8 "
+  >
+  <div class="welcoming top-[20%] left-0 max-w-sm">
+    <h1 class="text-4xl relative text-center text-white ">Welcome to Chatters <span class="text-yellow-300"> Hub!</span></h1>
+    <p class="text-lg max-md:hidden relative text-center text-gray-300">
+      Connect with strangers, share messages, and <span class="text-green-200">chat</span> with them in real-time.
+    </p>
+  </div>
+    <div class="bg-white max-md:  rounded-lg shadow-xl p-8 max-md:m flex flex-col items-center space-y-6">
+   
+      <div class="bg-blue-200   w-56 h-56 md:h-96 md:w-96 relative rounded-full p-4">
+       <img class="h-fit avatar z-max rounded-full" src="images/girlAvatar.png" alt="">
+      </div>
+      
+   
+      <input
+        class="username w-72 p-4 text-lg rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400 text-center"
+        placeholder="Enter username"
+        type="text"
+      />
+  <div class="error-message hidden text-red-500 bg-red-100 border border-red-400 p-2 rounded mb-4">
+    Username must be at least 3 characters long
+  </div>
+     
+      <button class="bg-gradient-to-r from-blue-500 to-purple-600 text-white text-lg px-6 py-3 rounded-full shadow-md hover:shadow-lg transition duration-300 userBtn">
+        Submit
+      </button>
+    </div>
+  </div>
+  
+  <div class="flex flex-col md:flex-row h-screen">
+   
+    <div class="md:w-1/4 bg-gray-100 border-r border-gray-200 p-4 h-screen overflow-y-auto hidden md:block">
+      <div class="flex justify-between">
+        <h1 class="text-lg font-semibold mb-4">Active Chatters</h1>
+        <h1 class="text-lg font-semibold users-count mb-4"></h1>
+      </div>
+   
+      <div class="space-y-4 users-container">
+      
+      </div>
+    </div>
+    <div class="md:hidden bg-gray-100 border-b border-gray-200 p-4">
+      <button
+        class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg flex items-center justify-between"
+        onclick="toggleDropdown()"
+      >
+        <span>Active Chatters</span>
+        <svg
+          class="w-5 h-5 transform transition-transform"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 9l-7 7-7-7"
+          ></path>
+        </svg>
+      </button>
+      <div
+        id="dropdown"
+        class="mt-2 hidden space-y-4 users-container bg-gray-100 border-t border-gray-200 pt-2"
+      >
+     
+      </div>
+    </div>
+
+   
+    <div class="flex-1 flex flex-col bg-gray-50">
+      
+      <div
+        class="flex items-center justify-between p-4 border-b border-gray-200"
+      >
+        <div class="flex items-center space-x-3">
+          <div
+            class="bg-transparent overflow-visible w-12 h-12 rounded-full flex items-center justify-center"
+          >
+            <img class="h-full w-full object-cover" src="/images/logo.png" alt="">
+          </div>
+          <div class="font-semibold">Chatters hub</div>
+        </div>
+        <div class="flex items-center space-x-3">
+        
+          <button onclick="window.open('https://www.instagram.com/shad.codes/', '_blank')"
+            class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
+          >
+           Report to Admin
+          </button>
+        </div>
+      </div>
+
+ 
+      <div class="flex-1 overflow-y-auto p-4 container">
+    
+        <div class="flex items-start space-x-3 mb-4">
+          <div
+            class="bg-blue-500 w-10 h-10 rounded-full flex items-center justify-center"
+          >
+            <span class="text-white font-bold text-sm">A</span>
+          </div>
+          <div class="flex-1 bg-white rounded-lg p-3">
+            <div class="font-semibold">Admin</div>
+            <p>Please be friendly and don't be rude to anyone <br>Enjoy chatting!</p>
+          </div>
+        </div>
+       
+      </div>
+
+ 
+      <div class="sticky bottom-0 flex items-center p-4 border-t border-gray-200 bg-gray-50">
+        <textarea
+          name=""
+          id=""
+          class="flex-1 resize-none rounded-xl px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 message overflow-y-hidden "
+          rows="1"
+          placeholder="Type your message..."
+        ></textarea>
+        <button
+          class="ml-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 submit rounded-full"
+        >
+          Send
+        </button>
+      </div>
+    </div>
+  </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js"
+      integrity="sha512-luMnTJZ7oEchNDZAtQhgjomP1eZefnl82ruTH/3Oj/Yu5qYtwL7+dVRccACS/Snp1lFXq188XFipHKYE75IaQQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="/javascript/script.js"></script>
+  </body>
+</html>

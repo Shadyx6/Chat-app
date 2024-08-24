@@ -1,0 +1,52 @@
+@keyframes flip {
+    0%{
+        transform: rotate3d(0,0,0,0);
+    }
+    10%{
+        transform: rotate3d(0,0,0,0);
+    }
+    30%{
+        transform: rotate3d(0,0,0,0);
+    }
+    40%{
+        transform: rotate3d(0,0,0,0);
+    }
+    50%{
+        transform: rotate3d(0,1,0, 180deg);
+    }
+    50%{
+        transform: rotate3d(0,0,0,0);
+    }
+    75%{
+        transform: rotate3d(0,0,0,0);
+    }
+    100%{
+        transform: rotate3d(0,1,0, 180deg);
+    }
+}
+.avatar{
+    animation: flip 5s linear infinite;
+    animation-delay: .7s;
+    transition: all cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@media (max-width: 768px) {
+    .container {
+      height: calc(100vh - 200px); /* Adjust this value based on your header and footer height */
+      max-height: calc(100vh - 200px);
+      overflow-y: auto;
+    }
+  }
+  
+  textarea {
+    min-height: 50px;
+    max-height: 50vh; /* Prevent it from growing too large */
+    overflow-y: hidden; /* Hide scrollbar */
+  }
+  
+  @media (min-width: 768px) {
+    textarea {
+      min-height: 40px;
+    }
+  }
+  
