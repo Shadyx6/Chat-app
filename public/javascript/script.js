@@ -4,7 +4,7 @@ const liveUser = document.querySelector(".user");
 let counter = document.querySelector('.users-count')
 let counterSmall = document.querySelector('.users-count-small')
 let userInput = document.querySelector(".username");
-
+let timer;
 
 function avatarChanger(){
  currentAvatar = document.querySelector('.avatar')
@@ -18,7 +18,7 @@ function avatarChanger(){
   }
  }, 5000);
 }
-avatarChanger()
+
 function liveChatters(){
   socket.on('showusers', (userData) => {
     let container = document.querySelectorAll('.users-container')
@@ -163,9 +163,26 @@ function toggleDropdown() {
     dropdown.classList.toggle('hidden');
   }
   
+function typing(){
+  let typingStatus = document.querySelector('.typing')
+  document.querySelector('.message').addEventListener('input', () => {
+    socket.emit('typing')
+  })
+
+  socket.on('typing', (username) => {
+    typingStatus.textContent = `${username} is typing....`
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      typingStatus.textContent = '';
+    }, 1200);
+
+  })
+}
+typing()
 inputAction();
-liveChatters()
-countUpdater()
+liveChatters();
+avatarChanger();
+countUpdater();
 registerPage();
 messageSender();
 messageHandler(); 

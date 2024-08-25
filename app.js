@@ -55,7 +55,11 @@ io.on("connection", (socket) => {
             io.emit('showusers', {username:users, joinedAt})
         }
     })
-   
+   socket.on('typing', () => {
+    let ID = userIds.indexOf(socket.id)
+    let username = users[ID]
+    socket.broadcast.emit('typing', username)
+   })
        
 
 })
